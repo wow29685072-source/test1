@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>失蹤的 2003：翠華學訊舊檔重現</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&family=DotGothic16&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505;
+            color: #00ff66;
+            font-family: 'DotGothic16', monospace;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* CRT 掃描線特效 */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 99999;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /*  CRT 微微閃爍與弧度感 */
+        .crt-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+        }
+
+        header {
+            border-bottom: 2px dashed #00ff66;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+        }
+
+        .meta-info {
+            font-size: 0.9rem;
+            color: #ff3333;
+        }
+
+        .main-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .terminal-box {
+            background: rgba(0, 20, 0, 0.6);
+            border: 1px solid #00ff66;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+        }
+
+        p, li {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .hidden-clue {
+            color: #050505;
+            background-color: #050505;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .hidden-clue:hover {
+            color: #ff3333;
+            background-color: #220000;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            background: #000;
+            border: 1px solid #00ff66;
+            color: #00ff66;
+            padding: 8px 12px;
+            font-family: 'DotGothic16', monospace;
+            font-size: 1rem;
+        }
+
+        button {
+            background: #00ff66;
+            color: #000;
+            border: none;
+            padding: 8px 20px;
+            font-family: 'DotGothic16', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #00cc52;
+            box-shadow: 0 0 10px #00ff66;
+        }
+
+        .error-msg {
+            color: #ff3333;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .success-msg {
+            color: #00ffff;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        footer {
+            margin-top: 15px;
+            border-top: 1px dashed #333;
+            padding-top: 10px;
+            font-size: 0.8rem;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mac-tip {
+            color: #ffaa00;
+            background: rgba(50, 40, 0, 0.4);
+            border: 1px solid #ffaa00;
+            padding: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="crt-container">
+        <header>
+            <h1>【翠華學訊】第 42 期 - 2003 畢業特刊數位檔案</h1>
+            <div class="meta-info">系統狀態：異常 / 檔案損毀</div>
+        </header>
+
+        <div class="mac-tip">
+            🍎 <strong>Mac 玩家提示</strong>：若需檢視網頁原始碼或主控台，請使用快捷鍵 <code style="color:#fff;">Cmd (⌘) + Option (⌥) + U</code> 或 <code style="color:#fff;">Cmd (⌘) + Option (⌥) + I</code>。
+        </div>
+
+        <div class="main-screen" id="app-container">
+            <!-- 關卡 1：注音解密 -->
+            <div class="terminal-box" id="stage-1">
+                <h3>[檔案 01：社辦留置的紙條]</h3>
+                <p>學測倒數 100 天的晚自習，桌上留下一張泛黃的紙條，上頭寫著一串奇怪的注音符號拼湊：</p>
+                <p style="font-size: 1.2rem; color: #ffff00; letter-spacing: 2px;">「ㄐㄧㄡˋ ㄐㄧㄡˋ ㄨㄛˇ」 (對應一般 QWERTY 英文鍵盤)</p>
+                <p>提示：請將這三個注音在鍵盤上對應的英文字母輸入下方（連續輸入，不含空格）：</p>
+                <div class="input-group">
+                    <input type="text" id="ans-1" placeholder="輸入解密密碼...">
+                    <button onclick="checkStage1()">解碼</button>
+                </div>
+                <div id="msg-1"></div>
+            </div>
+        </div>
+
+        <footer>
+            <div>翠華高中資訊社 © 2003 Archive Server</div>
+            <div id="audio-control" style="cursor:pointer; color:#00ff66;" onclick="toggleSound()">[點擊開啟音效/磁帶雜音]</div>
+        </footer>
+    </div>
+
+    <script>
+        // 音效開關與簡單 Web Audio 噪音模擬
+        let audioCtx = null;
+        let isPlaying = false;
+
+        function toggleSound() {
+            if (!isPlaying) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                // 產生低頻環境音與雜訊
+                playAmbientNoise();
+                isPlaying = true;
+                document.getElementById('audio-control').innerText = '[音效已啟用：磁帶運作中]';
+            } else {
+                if (audioCtx) {
+                    audioCtx.close();
+                }
+                isPlaying = false;
+                document.getElementById('audio-control').innerText = '[點擊開啟音效/磁帶雜音]';
+            }
+        }
+
+        function playAmbientNoise() {
+            if (!audioCtx) return;
+            // 簡單白噪音產生器
+            const bufferSize = audioCtx.sampleRate * 2;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+            noise.loop = true;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.value = 800; // 悶悶的磁帶感
+
+            const gain = audioCtx.createGain();
+            gain.gain.value = 0.03; // 音量調小
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+            noise.start();
+        }
+
+        // 第一關驗證邏輯
+        function checkStage1() {
+            const val = document.getElementById('ans-1').value.trim().toLowerCase();
+            // ㄐ(g) ㄧ(k) ㄡ(3) -> giu / 救救我 對應注音鍵盤：g = ㄐ, k = ㄧ, 3 = ㄡ, 1 = ㄨ, 0 = ㄛ
+            // 「ㄐㄧㄡˋ ㄐㄧㄡˋ ㄨㄛˇ」 -> ggk3ggk31j0 或直接認明 "ggk3"
+            if (val === 'ggk3ggk31j0' || val === 'ggk3' || val === '救救我') {
+                document.getElementById('msg-1').innerHTML = '<span class="success-msg">解密成功！解鎖第二關：高三國文課本矩陣...</span>';
+                setTimeout(loadStage2, 1500);
+            } else {
+                document.getElementById('msg-1').innerHTML = '<span class="error-msg">❌ 密碼錯誤，請檢查注音鍵盤對應！</span>';
+            }
+        }
+
+        // 第二關載入
+        function loadStage2() {
+            const container = document.getElementById('app-container');
+            container.innerHTML = `
+                <div class="terminal-box" id="stage-2">
+                    <h3>[檔案 02：108 課綱古文矩陣密碼]</h3>
+                    <p>桌上翻開了高三必讀的《項脊軒志》。其中一段被紅筆圈出：</p>
+                    <blockquote style="border-left: 2px solid #00ff66; padding-left: 10px; margin: 10px 0; color: #ccc;">
+                        「庭有枇杷樹，吾妻死之年所手植也，今已亭亭如蓋矣。」
+                    </blockquote>
+                    <p>提示：請找出這段話中第 <strong>3</strong> 個字與第 <strong>12</strong> 個字的組合，並結合網址列參數（或按 F12 / Cmd+Opt+U 查看原始碼隱藏註解）。</p>
+                    <p class="hidden-clue">[隱藏提示] 原始碼內藏有通往 BBS 檔案庫的秘密網址：<code>bbs_archive.html</code></p>
+                    <div class="input-group">
+                        <input type="text" id="ans-2" placeholder="輸入最終學測解密序號...">
+                        <button onclick="checkStage2()">驗證進入舊社辦</button>
+                    </div>
+                    <div id="msg-2"></div>
+                </div>
+            `;
+        }
+
+        function checkStage2() {
+            const val = document.getElementById('ans-2').value.trim();
+            if (val === '2003' || val === '枇杷') {
+                document.getElementById('msg-2').innerHTML = '<span class="success-msg">權限確認。正在轉跳至無名小站/BBS 舊檔...</span>';
+                setTimeout(() => {
+                    alert("【警告】偵測到不明連線入侵！2003年的學籍檔案已被鎖定。");
+                }, 1000);
+            } else {
+                document.getElementById('msg-2').innerHTML = '<span class="error-msg">❌ 答案不正確，請重新檢視古文與原始碼！</span>';
+            }
+        }
+    </script>
+</body>
+</html>
